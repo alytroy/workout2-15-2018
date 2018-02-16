@@ -11,50 +11,70 @@ public class AppStateSteamPlant
     private int constant INITIAL_HEAT_AVAILABLE = 1000;
     private double currentPressure;
     private int heatAvailable;
-
-    public SteamPlant()
+    private static SteamPlant steamPlant;
+    
+    private SteamPlant()
     {
-        SteamPlant plant = new SteamPlant();
+        //SteamPlant plant = new SteamPlant();
         heatAvailabe = INITIAL_HEAT_AVAILABLE;
         currentPressure = INITIAL_PRESSURE;
     }
 
-    public SteamPlant getSteamPlant()
+    public static synchronized SteamPlant getSteamPlant()
     {
-
+        if (steamPlant == null)
+        {
+            steamPlant = new SteamPlant();
+        }
+        return steamPlant;
     }
 
     public int consumeHeat(int h)
     {
-        heatAvailable = (heatAvailable - h) > 0;
-        if (heatAvailable < h)
+        //heatAvailable = (heatAvailable - h) > 0;
+        if (heatAvailable > h)
         {
-            return consumeHeat;
+            return h;
+        }
+        else
+        {
+            return h;
         }
     }
 
     public void setCurrentPressure(double p)
     {
-        if (p > MAX_PRESSURE)
+        if (p <= MAX_PRESSURE)
         {
-            currentPressure = MAX_PRESSURE;
+            currentPressure = p;
         }
-        if (p < MIN_PRESSURE)
+        if (p >= MIN_PRESSURE)
         {
-            currentPressure = MIN_PRESSURE;
+            currentPressure = p;
         }
     }
 
     public double changeCurrentPressure(double p)
     {
-        if (MAX_PRESSURE > p > MIN_PRESSURE)
+        double temp = currentPressure;
+        currentPressure += p;
+        if (currentPressure <= MAX_PRESSURE && currentPressure >=  MIN_PRESSURE)
         {
             return currentPressure;
+        }
+        else
+        {
+            return temp;
         }
     }
 
     public void timeTick()
     {
-        heatAvailable = heatAvailable + (currentPressure - 2) * 280;
+        int temp = heatAvailable + (int)(currentPressure - 2) * 280;
+        if (temp > 0)
+        {
+            heatAvailable = temp;
+        }
+        //heatAvailable = heatAvailable + (currentPressure - 2) * 280;
     }
 }
