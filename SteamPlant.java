@@ -3,21 +3,21 @@
  * @author David O'Keefe
  */
 
-public class AppStateSteamPlant
+public class SteamPlant
 {
-    private double constant MAX_PRESSURE = 10;
-    private double constant MIN_PRESSURE = 0.5;
-    private double constant INITIAL_PRESSURE = 5.0;
-    private int constant INITIAL_HEAT_AVAILABLE = 1000;
+    private double MAX_PRESSURE = 10;
+    private double MIN_PRESSURE = 0.5;
+    private double INITIAL_PRESSURE = 5.0;
+    private int INITIAL_HEAT_AVAILABLE = 1000;
     private double currentPressure;
     private int heatAvailable;
     private static SteamPlant steamPlant;
     
     private SteamPlant()
     {
-        //SteamPlant plant = new SteamPlant();
-        heatAvailabe = INITIAL_HEAT_AVAILABLE;
-        currentPressure = INITIAL_PRESSURE;
+        SteamPlant plant = new SteamPlant();
+        heatAvailable = INITIAL_HEAT_AVAILABLE;
+        //currentPressure = INITIAL_PRESSURE;
     }
 
     public static synchronized SteamPlant getSteamPlant()

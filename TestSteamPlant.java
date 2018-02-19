@@ -3,12 +3,12 @@ import java.util.Scanner;
 public class TestSteamPlant {
     public static void main(String args[]) {
          Scanner in = new Scanner(System.in);
-         System.out.print(“Enter the building size, thermostat setting, and outside temperature for Building 1: ”);
+         System.out.print("Enter the building size, thermostat setting, and outside temperature for Building 1: ");
          int size1 = in.nextInt();
          int thermostat1 = in.nextInt();
          int outsideTemperature1 = in.nextInt();
          
-         System.out.print(“Enter the building size, thermostat setting, and outside temperature for Building 2: ”);
+         System.out.print("Enter the building size, thermostat setting, and outside temperature for Building 2: ");
          int size2 = in.nextInt();
          int thermostat2 = in.nextInt();
          int outsideTemperature2 = in.nextInt();

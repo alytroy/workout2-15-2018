@@ -7,15 +7,15 @@ public class Building implements Runnable
 {
     SteamPlant steamPlant;
     int size;
-    int thermostateSetting;
+    int thermostatSetting;
     int outsideTemperature;
 
     public Building(int size, int thermostatSetting, int outsideTemperature)
     {
         steamPlant = SteamPlant.getSteamPlant();
         this.size = size;
-        thermostatSetting = thermoSetting;
-        outsideTemperature = outTemp;    
+        this.thermostatSetting = thermostatSetting;
+        this.outsideTemperature = outsideTemperature;    
     }
     
     public void run()
@@ -31,7 +31,7 @@ public class Building implements Runnable
                 e.printStackTrace();
             }
             int h;
-            int x = (thermoSetting - outTemp) * size/2500;
+            int x = (thermostatSetting - outsideTemperature) * size/2500;
             if (x > 0)
             {
                 h = x;
