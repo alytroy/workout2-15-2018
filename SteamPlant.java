@@ -17,7 +17,7 @@ public class SteamPlant
     {
         SteamPlant plant = new SteamPlant();
         heatAvailable = INITIAL_HEAT_AVAILABLE;
-        //currentPressure = INITIAL_PRESSURE;
+        currentPressure = INITIAL_PRESSURE;
     }
 
     public static synchronized SteamPlant getSteamPlant()
