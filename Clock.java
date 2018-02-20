@@ -1,4 +1,5 @@
 import java.util.*;
+import static java.util.concurrent.TimeUnit.SECONDS;
 /*
  * @author Aly Troy
  * @author David O'keefe
@@ -20,7 +21,7 @@ public class Clock implements Runnable
             double randomValue = -1 + (1 - -1) * rand.nextDouble();
             try
             {
-                Thread.sleep(5000);
+                SECONDS.sleep(5);
             }
             catch (InterruptedException e)
             {

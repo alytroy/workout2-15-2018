@@ -15,7 +15,7 @@ public class SteamPlant
     
     private SteamPlant()
     {
-        SteamPlant plant = new SteamPlant();
+        //SteamPlant plant = new SteamPlant();
         heatAvailable = INITIAL_HEAT_AVAILABLE;
         currentPressure = INITIAL_PRESSURE;
     }
@@ -25,21 +25,22 @@ public class SteamPlant
         if (steamPlant == null)
         {
             steamPlant = new SteamPlant();
+
         }
         return steamPlant;
     }
 
-    public int consumeHeat(int h)
+    public synchronized int consumeHeat(int h)
     {
         //heatAvailable = (heatAvailable - h) > 0;
-        if (heatAvailable > h)
-        {
-            return h;
+        System.out.println("Heat Lost: " + h);
+        System.out.println("Heat Available: " + heatAvailable);
+        System.out.println("CurrentPressure: " + currentPressure + "\n");
+
+        if (heatAvailable > h){
+            return heatAvailable -h;
         }
-        else
-        {
-            return h;
-        }
+        return h;
     }
 
     public void setCurrentPressure(double p)
@@ -75,6 +76,9 @@ public class SteamPlant
         {
             heatAvailable = temp;
         }
+        System.out.println("Time has Passed!");
+        System.out.println("Heat Available: " + heatAvailable);
+        System.out.println("CurrentPressure: " + currentPressure + "\n");
         //heatAvailable = heatAvailable + (currentPressure - 2) * 280;
     }
 }
